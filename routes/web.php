@@ -1,40 +1,43 @@
 <?php
 
+use App\Http\Controllers\StafController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('homePage');
 });
 
-Route::get('/category', function () {
-    return view('categoryPage');
-});
+Route::resource('staf', StafController::class);
 
-Route::get('/year', function () {
-    return view('yearPage');
-});
+// Route::get('/category', function () {
+//     return view('categoryPage');
+// });
 
-Route::get('/detail', function () {
-    return view('detailPage');
-});
+// Route::get('/year', function () {
+//     return view('yearPage');
+// });
 
-Route::get('/alarmHistory', function () {
-    return view('alarmHistoryPage');
-});
+// Route::get('/detail', function () {
+//     return view('detailPage');
+// });
 
-Route::get('/reportHistory', function () {
-    return view('reportHistoryPage');
-});
+// Route::get('/alarmHistory', function () {
+//     return view('alarmHistoryPage');
+// });
 
-Route::get('/edit', function () {
-    return view('editPage');
-});
+// Route::get('/reportHistory', function () {
+//     return view('reportHistoryPage');
+// });
 
-Route::get('/add', function () {
-    return view('addPage');
-});
+// Route::get('/edit', function () {
+//     return view('editPage');
+// });
 
-Route::get('/welcome', function () {
-    return view('wellcome');
-});
+// Route::get('/add', function () {
+//     return view('addPage');
+// });
+
+// Route::get('/welcome', function () {
+//     return view('wellcome');
+// });
 
