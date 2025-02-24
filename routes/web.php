@@ -4,7 +4,7 @@ use App\Http\Controllers\StafController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('homePage');
+    return view('welcome');
 });
 
 Route::resource('staf', StafController::class);

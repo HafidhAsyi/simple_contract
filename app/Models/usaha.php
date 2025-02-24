@@ -14,7 +14,7 @@ class usaha extends Model
     {
         return $this->hasMany(laporan::class);
     }
-    //satu usaha punya banyak laporan (relasi one to many)
+    //satu usaha punya banyak riwayat (relasi one to many)
     public function riwayats(): HasMany
     {
         return $this->hasMany(riwayat::class);
