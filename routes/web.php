@@ -1,13 +1,17 @@
 <?php
 
 use App\Http\Controllers\StafController;
+use App\Http\Controllers\UsahaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('staf', StafController::class);
+Route::get('usahas', [UsahaController::class, 'index']);
+// Route::resource('staf', StafController::class);
+
+//  Route::resource('usahas', UsahaController::class);
 
 // Route::get('/category', function () {
 //     return view('categoryPage');

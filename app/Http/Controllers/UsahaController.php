@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\usaha;
 use Illuminate\Http\Request;
+//use App\Http\Controllers\view;
+use Illuminate\Support\Facades\DB;
 
 class UsahaController extends Controller
 {
@@ -12,8 +14,16 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $allUsaha = usaha::all();
-        return view('usaha.index', compact('allUsaha'));
+        // $allUsaha = usaha::all();
+        // return view('usaha.index', compact('allUsaha'));
+        $view_data = [
+            'usahas' => [
+                //first, last, handle
+                ['hafidh', 'asyi', '@gmail.com'],
+                ['iysa', 'hdifah', '@yahoo.com']
+            ]
+        ];
+        return view('usahas.index', $view_data);
     }
 
     /**
@@ -21,7 +31,7 @@ class UsahaController extends Controller
      */
     public function create()
     {
-        return view('usaha.create');
+        return view('usahas.create');
     }
 
     /**
@@ -29,16 +39,20 @@ class UsahaController extends Controller
      */
     public function store(Request $request)
     {
-        //validasi
-        $validatedData = $request->validate([
-            'namaUsaha' => 'required'
+        //cara nerima inputan dari user di Controller
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+
+        DB::table('usahas')->insert([
+            'title' => $title,
+            'content' => $content,
+            'created_at' => date ('Y-m-d H:i:s'),
+            'updated_at' => date ('Y-m-d H:i:s'),
         ]);
-
-        //simpan
-        usaha::create($validatedData);
-
+        
         //redirect
-        return redirect()->route('usaha.index');
+        return redirect('usahas');
     }
 
     /**
