@@ -8,10 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('usahas', [UsahaController::class, 'index']);
-// Route::resource('staf', StafController::class);
+//Route::get('stafs', [StafController::class, 'index']);
+Route::resource('stafs', StafController::class);
 
-//  Route::resource('usahas', UsahaController::class);
+Route::resource('usahas', UsahaController::class);
 
 // Route::get('/category', function () {
 //     return view('categoryPage');

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -60,8 +60,11 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <h2>Nama Staf</h2>
+    <div class="container-fluid mt-2">
+        <h1>HAFIDH ASYI</h1>
+    </div>
+    <div class="d-flex justify-content-between mt-5 ms-3 me-3 mb-2">
+        <h6 style="display:inline-block">Total Usaha : </h6>
         <button type="button" class="btn btn-success">Tambah Usaha Baru</button>
     </div>
     <div class="container-fluid">
