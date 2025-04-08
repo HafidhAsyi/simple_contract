@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\usaha;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 //use App\Http\Controllers\view;
 use Illuminate\Support\Facades\DB;
@@ -14,16 +15,8 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        // $allUsaha = usaha::all();
-        // return view('usaha.index', compact('allUsaha'));
-        $view_data = [
-            'usahas' => [
-                //first, last, handle
-                ['hafidh', 'asyi', '@gmail.com'],
-                ['iysa', 'hdifah', '@yahoo.com']
-            ]
-        ];
-        return view('usahas.index', $view_data);
+        $allUsaha = usaha::all();
+        return view('usahas.otherIndex', compact('allUsaha'));
     }
 
     /**
@@ -40,19 +33,37 @@ class UsahaController extends Controller
     public function store(Request $request)
     {
         //cara nerima inputan dari user di Controller
-        $title = $request->input('title');
-        $content = $request->input('content');
+        $id = $request->input('id');
+        $namaUsaha = $request->input('namaUsaha');
+        $kategoriUsaha = $request->input('kategoriUsaha');
+        $alamatUsaha = $request->input('alamatUsaha');
+        $namaPemilik = $request->input('namaPemilik');
+        $email = $request->input('email');
+        $nomorHP = $request->input('nomorHP');
 
 
         DB::table('usahas')->insert([
-            'title' => $title,
-            'content' => $content,
-            'created_at' => date ('Y-m-d H:i:s'),
-            'updated_at' => date ('Y-m-d H:i:s'),
+            'id' => $id,
+            'namaUsaha' => $namaUsaha,
+            'kategoriUsaha' => $kategoriUsaha,
+            'alamatUsaha' => $alamatUsaha,
+            'namaPemilik' => $namaPemilik,
+            'email' => $email,
+            'nomorHP' => $nomorHP,
+            'statusUsaha' => 'proses',
+            'nomorSK' => '-',
+            'createdAt' => Carbon::now(),
+            'updatedAt' => Carbon::now(),
+            'createdBy' => 'nama staf',
+            'updatedBy' => 'nama staf',
+            
         ]);
+
+        //simpan data inputan
+        // usaha::create($request->all());
         
         //redirect
-        return redirect('usahas');
+        return redirect()->route('usahas.index');
     }
 
     /**
@@ -60,7 +71,7 @@ class UsahaController extends Controller
      */
     public function show(usaha $usaha)
     {
-        return view('usaha.show', compact('usaha'));
+        return view('usahas.show', compact('usaha'));
     }
 
     /**
@@ -68,7 +79,7 @@ class UsahaController extends Controller
      */
     public function edit(usaha $usaha)
     {
-        return view('usaha.edit', compact('usaha'));
+        return view('usahas.edit', compact('usaha'));
     }
 
     /**
@@ -76,16 +87,11 @@ class UsahaController extends Controller
      */
     public function update(Request $request, usaha $usaha)
     {
-        //validasi
-        $validatedData = $request->validate([
-            'namaPemilik' => 'required'
-        ]);
-
         //simpan
-        $usaha->update($validatedData);
+        $usaha->update($request->all());
 
         //redirect
-        return redirect()->route('usaha.index');
+        return redirect()->route('usahas.index');
     }
 
     /**
@@ -95,6 +101,6 @@ class UsahaController extends Controller
     {
         $usaha->delete();
         //redirect
-        return redirect()->route('usaha.index');
+        return redirect()->route('usahas.index');
     }
 }
