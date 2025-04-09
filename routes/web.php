@@ -13,6 +13,10 @@ Route::resource('stafs', StafController::class);
 
 Route::resource('usahas', UsahaController::class);
 
+// Route::get('/usahas/{category}', UsahaController::class, 'categoryIndex');
+
+// Route::get('/usahas/{year}', UsahaController::class, 'yearIndex');
+
 // Route::get('/category', function () {
 //     return view('categoryPage');
 // });

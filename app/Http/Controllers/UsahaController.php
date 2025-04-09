@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\usaha;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-//use App\Http\Controllers\view;
+use App\Http\Controllers\view;
 use Illuminate\Support\Facades\DB;
 
 class UsahaController extends Controller
@@ -15,8 +15,71 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $allUsaha = usaha::all();
-        return view('usahas.otherIndex', compact('allUsaha'));
+        $usahas = DB::table('usahas')
+                        ->select('id', 'namaUsaha', 'statusUsaha', 'sixMonthTempoAt', 'oneYearTempoAt')
+                        ->get();
+        $viewData = [
+            'usahas' => $usahas,
+        ];
+
+        //get data from staf table
+        // $namaStaf = DB::table('stafs')
+        //                 ->select('namaStaf')
+        //                 ->get();
+        // $viewNama = [
+        //     'stafs' => $namaStaf,
+        // ];
+
+        return view('usahas.otherIndex', $viewData);
+    }
+
+    /**
+     * Display a year listing of the resource.
+     */
+    public function yearIndex($year)
+    {
+        $usahas = DB::table('usahas')
+                        ->select('id', 'namaUsaha')
+                        ->whereYear('approvedAt', $year)
+                        ->get();
+        $viewData = [
+            'usahas' => $usahas,
+        ];
+
+        //get data from staf table
+        // $namaStaf = DB::table('stafs')
+        //                 ->select('namaStaf')
+        //                 ->get();
+        // $viewNama = [
+        //     'stafs' => $namaStaf,
+        // ];
+
+        return view('usahas.yearIndex', $viewData);
+    }
+
+    /**
+     * Display a category listing of the resource.
+     */
+    public function categoryIndex($category)
+    {
+        
+        $usahas = DB::table('usahas')
+                        ->select('id', 'namaUsaha')
+                        ->where('kategoriUsaha', $category)
+                        ->get();
+        $viewData = [
+            'usahas' => $usahas,
+        ];
+
+        //get data from staf table
+        // $namaStaf = DB::table('stafs')
+        //                 ->select('namaStaf')
+        //                 ->get();
+        // $viewNama = [
+        //     'stafs' => $namaStaf,
+        // ];
+
+        return view('usahas.categoryIndex', $viewData);
     }
 
     /**

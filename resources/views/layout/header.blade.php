@@ -14,8 +14,34 @@
         <h1>Manajemen Unit Usaha</h1>
         <div class="nav">
             <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/kategori">Kategori</a></li>
-                <li><a href="/tahun">Tahun</a></li>
+                <li><a href="{{ route('usahas.index') }}">Home</a></li>
+                {{-- <li>
+                    <select name="" id="">
+                        <option value="2025"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2025</a>
+                        </option>
+                        <option value="2024"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2024</a>
+                        </option>
+                        <option value="2023"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2023</a>
+                        </option>
+                        <option value="2022"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2022</a>
+                        </option>
+                        <option value="2021"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2021</a>
+                        </option>
+                    </select>
+                </li> --}}
+                <li>
+                    <select name="" id="">
+                        <option value="1"><a href="{{ route('usahas.categoryIndex') }}">Kategori 1</a>
+                        </option>
+                        <option value="2"><a href="{{ route('usahas.categoryIndex') }}">Kategori 2</a>
+                        </option>
+                        <option value="3"><a href="{{ route('usahas.categoryIndex') }}">Kategori 3</a>
+                        </option>
+                        <option value="4"><a href="{{ route('usahas.categoryIndex') }}">Kategori 4</a>
+                        </option>
+                        <option value="5"><a href="{{ route('usahas.categoryIndex') }}">Kategori 5</a>
+                        </option>
+                    </select>
+                </li>
             </ul>
         </div>
