@@ -30,7 +30,7 @@ class UsahaController extends Controller
         //     'stafs' => $namaStaf,
         // ];
 
-        return view('usahas.otherIndex', $viewData);
+        return view('usahas.index', $viewData);
     }
 
     /**
@@ -60,12 +60,13 @@ class UsahaController extends Controller
     /**
      * Display a category listing of the resource.
      */
-    public function categoryIndex($category)
+    public function categoryIndex(usaha $usaha)
     {
         
         $usahas = DB::table('usahas')
-                        ->select('id', 'namaUsaha')
-                        ->where('kategoriUsaha', $category)
+                        ->select('id', 'namaUsaha', 'kategoriUsaha')
+                        ->first()
+                        ->where('kategoriUsaha', $usaha)
                         ->get();
         $viewData = [
             'usahas' => $usahas,

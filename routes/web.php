@@ -5,10 +5,9 @@ use App\Http\Controllers\UsahaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-//Route::get('stafs', [StafController::class, 'index']);
 Route::resource('stafs', StafController::class);
 
 Route::resource('usahas', UsahaController::class);

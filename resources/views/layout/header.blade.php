@@ -31,7 +31,8 @@
                 </li> --}}
                 <li>
                     <select name="" id="">
-                        <option value="1"><a href="{{ route('usahas.categoryIndex') }}">Kategori 1</a>
+                        <option value="1"><a
+                                href="{{ route('usahas.categoryIndex', $usahas->kategoriUsaha) }}">Kategori 1</a>
                         </option>
                         <option value="2"><a href="{{ route('usahas.categoryIndex') }}">Kategori 2</a>
                         </option>
