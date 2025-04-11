@@ -10,9 +10,15 @@ Route::get('/', function () {
 
 Route::resource('stafs', StafController::class);
 
-Route::resource('usahas', UsahaController::class);
+// Route::resource('usahas', UsahaController::class);
+Route::get('usahas', [UsahaController::class, 'index'])->name('usahas.index');
+Route::get('usahas/category', [UsahaController::class, 'categoryIndex'])->name('usahas.categoryIndex');
+Route::get('usahas/year', [UsahaController::class, 'yearIndex'])->name('usahas.yearIndex');
+Route::delete('usahas/{id}', [UsahaController::class, 'destroy'])->name('usahas.destroy');
+Route::get('usahas/{id}', [UsahaController::class, 'show'])->name('usahas.show');
+Route::get('usahas/edit/{id}', [UsahaController::class, 'edit'])->name('usahas.edit');
 
-// Route::get('/usahas/{category}', UsahaController::class, 'categoryIndex');
+
 
 // Route::get('/usahas/{year}', UsahaController::class, 'yearIndex');
 

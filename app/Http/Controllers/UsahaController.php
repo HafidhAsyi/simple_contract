@@ -36,11 +36,11 @@ class UsahaController extends Controller
     /**
      * Display a year listing of the resource.
      */
-    public function yearIndex($year)
+    public function yearIndex(usaha $usaha)
     {
         $usahas = DB::table('usahas')
                         ->select('id', 'namaUsaha')
-                        ->whereYear('approvedAt', $year)
+                        ->whereYear('approvedAt', $usaha)
                         ->get();
         $viewData = [
             'usahas' => $usahas,
@@ -60,13 +60,13 @@ class UsahaController extends Controller
     /**
      * Display a category listing of the resource.
      */
-    public function categoryIndex(usaha $usaha)
+    public function categoryIndex()
     {
         
         $usahas = DB::table('usahas')
                         ->select('id', 'namaUsaha', 'kategoriUsaha')
-                        ->first()
-                        ->where('kategoriUsaha', $usaha)
+                        // ->first()
+                        ->where('kategoriUsaha', '4')
                         ->get();
         $viewData = [
             'usahas' => $usahas,

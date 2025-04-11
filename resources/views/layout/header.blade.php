@@ -5,44 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contract Ext</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <title>Unit Usaha</title>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Manajemen Unit Usaha</h1>
-        <div class="nav">
-            <ul>
-                <li><a href="{{ route('usahas.index') }}">Home</a></li>
-                {{-- <li>
-                    <select name="" id="">
-                        <option value="2025"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2025</a>
-                        </option>
-                        <option value="2024"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2024</a>
-                        </option>
-                        <option value="2023"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2023</a>
-                        </option>
-                        <option value="2022"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2022</a>
-                        </option>
-                        <option value="2021"><a href="{{ route('usahas.yearIndex', $usahas->approvedAt) }}">2021</a>
-                        </option>
-                    </select>
-                </li> --}}
-                <li>
-                    <select name="" id="">
-                        <option value="1"><a
-                                href="{{ route('usahas.categoryIndex', $usahas->kategoriUsaha) }}">Kategori 1</a>
-                        </option>
-                        <option value="2"><a href="{{ route('usahas.categoryIndex') }}">Kategori 2</a>
-                        </option>
-                        <option value="3"><a href="{{ route('usahas.categoryIndex') }}">Kategori 3</a>
-                        </option>
-                        <option value="4"><a href="{{ route('usahas.categoryIndex') }}">Kategori 4</a>
-                        </option>
-                        <option value="5"><a href="{{ route('usahas.categoryIndex') }}">Kategori 5</a>
-                        </option>
-                    </select>
-                </li>
-            </ul>
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Unit Usaha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('usahas.index') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Kategori
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Kategori 1</a></li>
+                            <li><a class="dropdown-item" href="#">Kategori 2</a></li>
+                            <li><a class="dropdown-item" href="#">Kategori 3</a></li>
+                            <li><a class="dropdown-item" href="#">Kategori 4</a></li>
+                            <li><a class="dropdown-item" href="#">Kategori 5</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Tahun
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">2025</a></li>
+                            <li><a class="dropdown-item" href="#">2024</a></li>
+                            <li><a class="dropdown-item" href="#">2023</a></li>
+                            <li><a class="dropdown-item" href="#">2022</a></li>
+                            <li><a class="dropdown-item" href="#">2021</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Cari Nama Usaha" aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
+    </nav>
+    <div class="container-fluid mt-2">
+        <h1>HAFIDH ASYI</h1>
+    </div>
