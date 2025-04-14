@@ -1,7 +1,7 @@
 @include('layout.header')
 <div class="d-flex justify-content-between mt-5 ms-3 me-3 mb-2">
     <h6 style="display:inline-block">Kategori Usaha: </h6>
-    <a href="#" class="btn btn-success">Total Usaha: </a>
+    <h6>Total Usaha: </h6>
 </div>
 <div class="container-fluid">
     <table class="table table-bordered border-success">

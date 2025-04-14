@@ -18,17 +18,13 @@ class UsahaController extends Controller
         $usahas = DB::table('usahas')
                         ->select('id', 'namaUsaha', 'statusUsaha', 'sixMonthTempoAt', 'oneYearTempoAt')
                         ->get();
+
+        $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
+
         $viewData = [
             'usahas' => $usahas,
+            'stafs' => $stafs,
         ];
-
-        //get data from staf table
-        // $namaStaf = DB::table('stafs')
-        //                 ->select('namaStaf')
-        //                 ->get();
-        // $viewNama = [
-        //     'stafs' => $namaStaf,
-        // ];
 
         return view('usahas.index', $viewData);
     }
@@ -36,49 +32,40 @@ class UsahaController extends Controller
     /**
      * Display a year listing of the resource.
      */
-    public function yearIndex(usaha $usaha)
+    public function yearIndex($usaha)
     {
         $usahas = DB::table('usahas')
                         ->select('id', 'namaUsaha')
-                        ->whereYear('approvedAt', $usaha)
+                        ->whereYear('createdAt', $usaha)
                         ->get();
+
+        $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
+
         $viewData = [
             'usahas' => $usahas,
+            'stafs' => $stafs,
         ];
 
-        //get data from staf table
-        // $namaStaf = DB::table('stafs')
-        //                 ->select('namaStaf')
-        //                 ->get();
-        // $viewNama = [
-        //     'stafs' => $namaStaf,
-        // ];
-
-        return view('usahas.yearIndex', $viewData);
+       return view('usahas.yearIndex', $viewData);
     }
 
     /**
      * Display a category listing of the resource.
      */
-    public function categoryIndex()
+    public function categoryIndex($usaha)
     {
         
         $usahas = DB::table('usahas')
                         ->select('id', 'namaUsaha', 'kategoriUsaha')
-                        // ->first()
-                        ->where('kategoriUsaha', '4')
+                        ->where('kategoriUsaha', $usaha)
                         ->get();
+        
+        $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
+
         $viewData = [
             'usahas' => $usahas,
+            'stafs' => $stafs,
         ];
-
-        //get data from staf table
-        // $namaStaf = DB::table('stafs')
-        //                 ->select('namaStaf')
-        //                 ->get();
-        // $viewNama = [
-        //     'stafs' => $namaStaf,
-        // ];
 
         return view('usahas.categoryIndex', $viewData);
     }

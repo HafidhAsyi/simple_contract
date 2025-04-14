@@ -30,11 +30,21 @@
                             Kategori
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Kategori 1</a></li>
-                            <li><a class="dropdown-item" href="#">Kategori 2</a></li>
-                            <li><a class="dropdown-item" href="#">Kategori 3</a></li>
-                            <li><a class="dropdown-item" href="#">Kategori 4</a></li>
-                            <li><a class="dropdown-item" href="#">Kategori 5</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.categoryIndex', ['kategoriUsaha' => 1]) }}">Kategori 1</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.categoryIndex', ['kategoriUsaha' => 2]) }}">Kategori 2</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.categoryIndex', ['kategoriUsaha' => 3]) }}">Kategori 3</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.categoryIndex', ['kategoriUsaha' => 4]) }}">Kategori 4</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.categoryIndex', ['kategoriUsaha' => 5]) }}">Kategori 5</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -43,11 +53,16 @@
                             Tahun
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">2025</a></li>
-                            <li><a class="dropdown-item" href="#">2024</a></li>
-                            <li><a class="dropdown-item" href="#">2023</a></li>
-                            <li><a class="dropdown-item" href="#">2022</a></li>
-                            <li><a class="dropdown-item" href="#">2021</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.yearIndex', ['tahun' => 2025]) }}">2025</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.yearIndex', ['tahun' => 2024]) }}">2024</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.yearIndex', ['tahun' => 2023]) }}">2023</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.yearIndex', ['tahun' => 2022]) }}">2022</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('usahas.yearIndex', ['tahun' => 2021]) }}">2021</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -58,6 +73,3 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid mt-2">
-        <h1>HAFIDH ASYI</h1>
-    </div>
