@@ -1,7 +1,4 @@
 @include('layout.header')
-<div class="container-fluid mt-2">
-    <h1>{{ $stafs->namaStaf }}</h1>
-</div>
 <div class="d-flex justify-content-between mt-5 ms-3 me-3 mb-2">
     <h6 style="display:inline-block">Total Usaha : </h6>
     <a href="{{ route('usahas.create') }}" class="btn btn-success">Tambah Usaha Baru</a>

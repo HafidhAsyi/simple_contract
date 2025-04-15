@@ -1,5 +1,4 @@
 @include('layout.header')
-<h1>{{ $stafs->namaStaf }}</h1>
 <div class="d-flex justify-content-between mt-5 ms-3 me-3 mb-2">
     <h6 style="display:inline-block">Tahun Pendaftaran Usaha: </h6>
     <h6>Total Usaha: </h6>
@@ -19,13 +18,7 @@
                     <td width="100px">{{ $usaha->id }}</td>
                     <td>{{ $usaha->namaUsaha }}</td>
                     <td width="250px">
-                        <form action="{{ route('usahas.destroy', $usaha->id) }}" method="POST">
-                            <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
-                            <a href="{{ route('usahas.edit', $usaha->id) }}" class="btn btn-success">Edit</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-success">Hapus</button>
-                        </form>
+                        <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
                     </td>
                 </tr>
             </tbody>

@@ -29,6 +29,17 @@ class UsahaController extends Controller
         return view('usahas.index', $viewData);
     }
 
+    public function header()
+    {
+        $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
+
+        $viewData = [
+            'stafs' => $stafs,
+        ];
+
+        return view('layout.header', $viewData);
+    }
+
     /**
      * Display a year listing of the resource.
      */
@@ -122,7 +133,15 @@ class UsahaController extends Controller
      */
     public function show(usaha $usaha)
     {
-        return view('usahas.show', compact('usaha'));
+        $unit = DB::table('usahas')
+                ->select('namaUsaha')
+                ->where('id', $usaha)
+                ->first();
+        
+        $viewData = [
+            'unit' => $unit
+        ];
+        return view('usahas.show', $viewData);
     }
 
     /**

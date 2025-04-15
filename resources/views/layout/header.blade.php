@@ -73,3 +73,6 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid mt-2">
+        <h1>{{ $stafs->namaStaf }}</h1>
+    </div>

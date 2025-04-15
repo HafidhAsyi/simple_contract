@@ -18,13 +18,7 @@
                     <td width="100px">{{ $usaha->id }}</td>
                     <td>{{ $usaha->namaUsaha }}</td>
                     <td width="250px">
-                        <form action="{{ route('usahas.destroy', $usaha->id) }}" method="POST">
-                            <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
-                            <a href="{{ route('usahas.edit', $usaha->id) }}" class="btn btn-success">Edit</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-success">Hapus</button>
-                        </form>
+                        <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
                     </td>
                 </tr>
             </tbody>

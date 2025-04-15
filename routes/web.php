@@ -11,6 +11,7 @@ Route::get('/', function () {
 Route::resource('stafs', StafController::class);
 
 // Route::resource('usahas', UsahaController::class);
+Route::get('usahas', [UsahaController::class, 'header'])->name('usahas.header');
 Route::get('usahas', [UsahaController::class, 'index'])->name('usahas.index');
 Route::get('usahas/category/{kategoriUsaha}', [UsahaController::class, 'categoryIndex'])->name('usahas.categoryIndex');
 Route::get('usahas/year/{tahun}', [UsahaController::class, 'yearIndex'])->name('usahas.yearIndex');
@@ -18,8 +19,8 @@ Route::get('usahas/year/{tahun}', [UsahaController::class, 'yearIndex'])->name('
 Route::get('usahas/create', [UsahaController::class, 'create'])->name('usahas.create');
 Route::post('usahas', [UsahaController::class, 'store'])->name('usahas.store');
 
-Route::get('usahas/edit/{id}', [UsahaController::class, 'edit'])->name('usahas.edit');
-// Route::put('usahas/{id}', [UsahaController::class, 'update'])->name('usahas.update');
+Route::get('usahas/{id}/edit', [UsahaController::class, 'edit'])->name('usahas.edit');
+Route::patch('usahas/{id}', [UsahaController::class, 'update'])->name('usahas.update');
 
 Route::delete('usahas/{id}', [UsahaController::class, 'destroy'])->name('usahas.destroy');
 Route::get('usahas/{id}', [UsahaController::class, 'show'])->name('usahas.show');
