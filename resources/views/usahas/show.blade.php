@@ -20,4 +20,10 @@
             </tr>
         </tbody>
     </table>
+    <a href="{{ route('usahas.index') }} " class="btn btn-success">Kembali</a>
+    <form action="{{ route('usahas.destroy', $unit->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-success">Hapus</button>
+    </form>
     @include('layout.footer')

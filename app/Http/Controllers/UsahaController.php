@@ -131,11 +131,12 @@ class UsahaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(usaha $usaha)
+    public function show($usaha)
     {
         $unit = DB::table('usahas')
-                ->select('namaUsaha')
+                ->select('id', 'namaUsaha')
                 ->where('id', $usaha)
+                ->get()
                 ->first();
         
         $viewData = [
@@ -147,30 +148,57 @@ class UsahaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(usaha $usaha)
+    public function edit($usaha)
     {
-        return view('usahas.edit', compact('usaha'));
+        $unit = DB::table('usahas')
+                ->select('id', 'namaUsaha', 'namaPemilik', 'email', 'nomorHP', 'kategoriUsaha', 'alamatUsaha')
+                ->where('id', $usaha)
+                ->get()
+                ->first();
+
+        $viewData = [
+            'unit' => $unit
+        ];
+        return view('usahas.edit', $viewData);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, usaha $usaha)
+    public function update(Request $request, $usaha)
     {
-        //simpan
-        $usaha->update($request->all());
+        $namaUsaha = $request->input('namaUsaha');
+        $namaPemilik = $request->input('namaPemilik');
+        $email = $request->input('email');
+        $nomorHP = $request->input('nomorHP');
+        $kategoriUsaha = $request->input('kategoriUsaha');
+        $alamatUsaha = $request->input('alamatUsaha');
+
+        DB::table('usahas')
+        ->where('id', $usaha)
+        ->update([
+            'namaUsaha' => $namaUsaha,
+            'namaPemilik' => $namaPemilik,
+            'email' => $email,
+            'nomorHP' => $nomorHP,
+            'kategoriUsaha' => $kategoriUsaha,
+            'alamatUsaha' => $alamatUsaha,
+            'updatedAt' => Carbon::now(), 
+        ]);
 
         //redirect
-        return redirect()->route('usahas.index');
+        return redirect()->route('usahas.show', $usaha);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(usaha $usaha)
+    public function destroy($usaha)
     {
-        $usaha->delete();
-        //redirect
+        DB::table('usahas')
+            ->where('id', $usaha)
+            ->delete();
+        
         return redirect()->route('usahas.index');
     }
 }
