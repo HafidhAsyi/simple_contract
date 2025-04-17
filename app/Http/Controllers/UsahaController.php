@@ -15,9 +15,7 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $usahas = DB::table('usahas')
-                        ->select('id', 'namaUsaha', 'statusUsaha', 'sixMonthTempoAt', 'oneYearTempoAt')
-                        ->get();
+        $usahas = usaha::get();
 
         $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
 
@@ -45,10 +43,7 @@ class UsahaController extends Controller
      */
     public function yearIndex($usaha)
     {
-        $usahas = DB::table('usahas')
-                        ->select('id', 'namaUsaha')
-                        ->whereYear('createdAt', $usaha)
-                        ->get();
+        $usahas = usaha::whereYear('createdAt', $usaha)->get();
 
         $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
 
@@ -66,10 +61,7 @@ class UsahaController extends Controller
     public function categoryIndex($usaha)
     {
         
-        $usahas = DB::table('usahas')
-                        ->select('id', 'namaUsaha', 'kategoriUsaha')
-                        ->where('kategoriUsaha', $usaha)
-                        ->get();
+        $usahas = usaha::where('kategoriUsaha', $usaha)->get();
         
         $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
 
@@ -104,7 +96,7 @@ class UsahaController extends Controller
         $nomorHP = $request->input('nomorHP');
 
 
-        DB::table('usahas')->insert([
+        usaha::insert([
             'id' => $id,
             'namaUsaha' => $namaUsaha,
             'kategoriUsaha' => $kategoriUsaha,
@@ -133,11 +125,7 @@ class UsahaController extends Controller
      */
     public function show($usaha)
     {
-        $unit = DB::table('usahas')
-                ->select('id', 'namaUsaha')
-                ->where('id', $usaha)
-                ->get()
-                ->first();
+        $unit = usaha::where('id', $usaha)->get()->first();
         
         $viewData = [
             'unit' => $unit
@@ -150,11 +138,7 @@ class UsahaController extends Controller
      */
     public function edit($usaha)
     {
-        $unit = DB::table('usahas')
-                ->select('id', 'namaUsaha', 'namaPemilik', 'email', 'nomorHP', 'kategoriUsaha', 'alamatUsaha')
-                ->where('id', $usaha)
-                ->get()
-                ->first();
+        $unit = usaha::where('id', $usaha)->get()->first();
 
         $viewData = [
             'unit' => $unit
@@ -174,8 +158,7 @@ class UsahaController extends Controller
         $kategoriUsaha = $request->input('kategoriUsaha');
         $alamatUsaha = $request->input('alamatUsaha');
 
-        DB::table('usahas')
-        ->where('id', $usaha)
+       usaha::where('id', $usaha)
         ->update([
             'namaUsaha' => $namaUsaha,
             'namaPemilik' => $namaPemilik,
@@ -195,8 +178,7 @@ class UsahaController extends Controller
      */
     public function destroy($usaha)
     {
-        DB::table('usahas')
-            ->where('id', $usaha)
+        usaha::where('id', $usaha)
             ->delete();
         
         return redirect()->route('usahas.index');
