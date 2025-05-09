@@ -4,7 +4,7 @@
     <a href="{{ route('usahas.create') }}" class="btn btn-success">Tambah Usaha Baru</a>
 </div>
 <div class="container-fluid">
-    <table class="table table-bordered border-success">
+    <table class="table table-bordered border-success text-center">
         <thead>
             <tr>
                 <th>ID Usaha</th>
@@ -19,18 +19,12 @@
             <tbody>
                 <tr>
                     <td width="100px">{{ $usaha->id }}</td>
-                    <td>{{ $usaha->namaUsaha }}</td>
+                    <td width="500px">{{ $usaha->namaUsaha }}</td>
                     <td>{{ $usaha->statusUsaha }}</td>
-                    <td>{{ $usaha->sixMonthTempoAt }}</td>
-                    <td>{{ $usaha->oneYearTempoAt }}</td>
-                    <td width="250px">
-                        <form action="{{ route('usahas.destroy', $usaha->id) }}" method="POST">
-                            <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
-                            <a href="{{ route('usahas.edit', $usaha->id) }}" class="btn btn-success">Edit</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-success">Hapus</button>
-                        </form>
+                    <td width="300px">{{ $usaha->sixMonthTempoAt }}</td>
+                    <td width="300px">{{ $usaha->oneYearTempoAt }}</td>
+                    <td width="200px" class="mx-auto">
+                        <a href="{{ route('usahas.show', $usaha->id) }}" class="btn btn-success">Detail</a>
                     </td>
                 </tr>
             </tbody>

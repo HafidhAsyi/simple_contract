@@ -17,6 +17,9 @@ class UsahaController extends Controller
     {
         $usahas = usaha::get();
 
+        // $usahas = DB::('usahas')
+        //             ->select()
+
         $stafs = DB::table('stafs')->select('namaStaf')->where('id', 1)->get()->first();
 
         $viewData = [
@@ -158,7 +161,8 @@ class UsahaController extends Controller
         $kategoriUsaha = $request->input('kategoriUsaha');
         $alamatUsaha = $request->input('alamatUsaha');
 
-       usaha::where('id', $usaha)
+       DB::table('usahas')
+        ->where('id', $usaha)
         ->update([
             'namaUsaha' => $namaUsaha,
             'namaPemilik' => $namaPemilik,
@@ -178,8 +182,7 @@ class UsahaController extends Controller
      */
     public function destroy($usaha)
     {
-        usaha::where('id', $usaha)
-            ->delete();
+        usaha::where('id', $usaha)->delete();
         
         return redirect()->route('usahas.index');
     }

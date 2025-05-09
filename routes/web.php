@@ -5,7 +5,7 @@ use App\Http\Controllers\UsahaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('usahas.riwayat');
 });
 
 Route::resource('stafs', StafController::class);
